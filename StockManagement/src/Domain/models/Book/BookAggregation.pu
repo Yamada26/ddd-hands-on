@@ -1,4 +1,3 @@
-
 @startuml BookAggregation
 
 title 書籍集約 (Book Aggregation)
