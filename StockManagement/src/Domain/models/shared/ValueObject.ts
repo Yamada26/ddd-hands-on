@@ -1,6 +1,8 @@
 import { isEqual } from "lodash";
 
-export abstract class ValueObject<T> {
+export abstract class ValueObject<T, U> {
+  // @ts-expect-error
+  private _type: U;
   protected readonly _value: T;
 
   constructor(value: T) {
@@ -14,7 +16,7 @@ export abstract class ValueObject<T> {
     return this._value;
   }
 
-  equals(other: ValueObject<T>): boolean {
+  equals(other: ValueObject<T, U>): boolean {
     return isEqual(this._value, other._value);
   }
 }

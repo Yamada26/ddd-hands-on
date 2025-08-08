@@ -1,6 +1,6 @@
 import { ValueObject } from "Domain/models/shared/ValueObject";
 
-export class BookId extends ValueObject<string> {
+export class BookId extends ValueObject<string, "BookId"> {
   static MAX_LENGTH = 13;
   static MIN_LENGTH = 10;
 
