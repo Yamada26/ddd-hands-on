@@ -1,0 +1,13 @@
+
+@startuml Status
+
+class "Status(ステータス)" as Status {
+    + value: Enum { InStock, LowStock, OutOfStock }
+}
+
+note bottom of Status
+    在庫のステータスは、 InStock (在庫あり), LowStock (残りわずか),
+    OutOfStock (在庫切れ)の3つ
+end note
+
+@enduml
