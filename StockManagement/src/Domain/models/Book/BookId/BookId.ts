@@ -1,17 +1,14 @@
-import { isEqual } from "lodash";
+import { ValueObject } from "Domain/models/shared/ValueObject";
 
-export class BookId {
-  private readonly _value: string;
-
+export class BookId extends ValueObject<string> {
   static MAX_LENGTH = 13;
   static MIN_LENGTH = 10;
 
   constructor(value: string) {
-    this.validate(value);
-    this._value = value;
+    super(value);
   }
 
-  private validate(isbn: string): void {
+  protected validate(isbn: string): void {
     if (isbn.length < BookId.MIN_LENGTH || isbn.length > BookId.MAX_LENGTH) {
       throw new Error("ISBNの文字数が不正です");
     }
@@ -31,14 +28,6 @@ export class BookId {
     // ISBN-13 のバリデーションロジックを実装
     // ここでは簡単な例を示しますが、実際にはより複雑なチェックが必要です
     return isbn13.startsWith("978") && isbn13.length === 13;
-  }
-
-  equals(other: BookId): boolean {
-    return isEqual(this._value, other._value);
-  }
-
-  get value(): string {
-    return this._value;
   }
 
   toISBN(): string {
